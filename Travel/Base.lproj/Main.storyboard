@@ -94,10 +94,10 @@
             </objects>
             <point key="canvasLocation" x="584" y="899"/>
         </scene>
-        <!--Tab Bar Controller-->
+        <!--Travel Tab Bar Controller-->
         <scene sceneID="nYg-As-R1u">
             <objects>
-                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="ZKL-uR-ESJ" sceneMemberID="viewController">
+                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="ZKL-uR-ESJ" customClass="TravelTabBarController" customModule="Travel" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="eA6-38-I8u">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
@@ -112,7 +112,7 @@
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aaC-ar-DEQ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-248.09160305343511" y="96.478873239436624"/>
+            <point key="canvasLocation" x="-381" y="43"/>
         </scene>
     </scenes>
     <resources>
