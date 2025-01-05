@@ -11,10 +11,13 @@ import Kingfisher
 class TravelInfoTableViewController: UITableViewController {
 
     // TODO: didSet에서 어떤 값이 바뀌었는지 혹은 바뀐 값의 인덱스도 받아오는 법
-    var info = TravelInfo().travel { didSet {
-        tableView.reloadData()
-        }
-    }
+    // => didSet의 경우 oldValue(바뀌기 전 값을 받아올 수 있다.),,,근데 바뀐 부분만 들고 오는게 아니라 통째로 들고오네...?
+    var info = TravelInfo().travel
+//    {
+//        didSet {
+//        tableView.reloadData()
+//        }
+//    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -83,6 +86,7 @@ class TravelInfoTableViewController: UITableViewController {
                         .infoLabelCollection[order].text = info[indexPath.row].description
                     cell.infoLabelCollection[order].numberOfLines = 0
                 case 2:
+                    // TODO: 별 그리기
                     cell.infoLabelCollection[order].textColor = .lightGray
                     cell
                         .infoLabelCollection[order].font = 
@@ -135,9 +139,6 @@ class TravelInfoTableViewController: UITableViewController {
         } else {
             info[sender.tag].like = true
         }
-        
-        let indexPath = IndexPath(row: sender.tag, section: 0)
-        
-//        tableView.reloadRows(at: [indexPath], with: .automatic)
+        tableView.reloadRows(at: [IndexPath(row: sender.tag, section: 0)], with: .none)
     }
 }
