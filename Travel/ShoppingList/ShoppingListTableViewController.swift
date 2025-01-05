@@ -18,7 +18,7 @@ class ShoppingListTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        tabBarItem.title = "쇼핑"
+        navigationItem.title = "쇼핑"
         setHeaderView()
         tableView.keyboardDismissMode = .onDrag
     }
