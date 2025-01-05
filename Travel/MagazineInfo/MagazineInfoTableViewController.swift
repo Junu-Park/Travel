@@ -23,7 +23,7 @@ class MagazineInfoTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "MagazineInfoCell", for: indexPath) as! MagazineInfoTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "MagazineInfoTableViewCell", for: indexPath) as! MagazineInfoTableViewCell
         
         cell.infoImage.contentMode = .scaleToFill
         cell.infoImage.layer.cornerRadius = 10

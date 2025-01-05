@@ -18,13 +18,4 @@ class MagazineInfoTableViewCell: UITableViewCell {
     @IBOutlet weak var infoSubTitle: UILabel!
     
     @IBOutlet weak var infoDate: UILabel!
-    
-    override func awakeFromNib() {
-        super.awakeFromNib()
-    }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-    }
-
 }
