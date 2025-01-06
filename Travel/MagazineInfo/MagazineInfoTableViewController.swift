@@ -10,7 +10,7 @@ import Kingfisher
 
 class MagazineInfoTableViewController: UITableViewController {
 
-    var info = MagazineInfo().magazine
+    var info = MagazineInfo.magazine
     
     let magazineEnum = TravelEnum.magazine
     

@@ -12,7 +12,7 @@ class TravelInfoTableViewController: UITableViewController {
 
     // TODO: didSet에서 어떤 값이 바뀌었는지 혹은 바뀐 값의 인덱스도 받아오는 법
     // => didSet의 경우 oldValue(바뀌기 전 값을 받아올 수 있다.),,,근데 바뀐 부분만 들고 오는게 아니라 통째로 들고오네...?
-    var info = TravelInfo().travel
+    var info = TravelInfo.travel
     
     let travelEnum = TravelEnum.travel
     
