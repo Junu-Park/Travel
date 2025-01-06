@@ -15,16 +15,17 @@ class ShoppingListTableViewController: UITableViewController {
     
     var list = ShoppingList().list
     
+    let shoppingEnum = TravelEnum.shopping
+    
     override func awakeFromNib() {
-        tabBarItem = .init(title: "쇼핑", image: .init(systemName: "cart"), tag: 0)
+        tabBarItem = .init(title: shoppingEnum.barTitle, image: .init(systemName: shoppingEnum.barImage), tag: 0)
+        navigationItem.title = shoppingEnum.naviTitle
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        navigationItem.title = "쇼핑"
-        setHeaderView()
         tableView.keyboardDismissMode = .onDrag
+        setHeaderView()
     }
 
     @IBAction func addShoppingList(_ sender: UIButton) {
@@ -35,8 +36,10 @@ class ShoppingListTableViewController: UITableViewController {
         }
         view.endEditing(true)
     }
+    
     @IBAction func dismissKeyboardWithTextField(_ sender: UITextField) {
     }
+    
     func setHeaderView() {
         headerView.backgroundColor = .systemGray6
         headerView.layer.cornerRadius = 10
@@ -57,10 +60,7 @@ class ShoppingListTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "ShoppingListTableViewCell", for: indexPath) as! ShoppingListTableViewCell
-
-        cell.shoppingView.backgroundColor = .systemGray6
-        cell.shoppingView.layer.cornerRadius = 10
+        let cell = tableView.dequeueReusableCell(withIdentifier: ShoppingListTableViewCell.id, for: indexPath) as! ShoppingListTableViewCell
         
         for order in 0..<cell.shoppingButtonCollection.count {
             cell.shoppingButtonCollection[order].tintColor = .black
@@ -69,8 +69,6 @@ class ShoppingListTableViewController: UITableViewController {
             cell.shoppingButtonCollection[order].addTarget(self, action: #selector(tapButton), for: .touchUpInside)
         }
         cell.shoppingLabel.text = list[indexPath.row].title
-        cell.shoppingLabel.numberOfLines = 0
-        cell.shoppingLabel.font = .systemFont(ofSize: 14)
         
         return cell
     }
@@ -122,50 +120,4 @@ class ShoppingListTableViewController: UITableViewController {
         
         return UISwipeActionsConfiguration(actions: [check])
     }
-    
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

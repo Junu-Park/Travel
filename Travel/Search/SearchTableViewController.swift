@@ -22,13 +22,15 @@ class SearchTableViewController: UITableViewController {
     
     let segmentTitleList = ["모두", "국내", "해외"]
     
+    let searchEnum = TravelEnum.search
+    
     override func awakeFromNib() {
         super.awakeFromNib()
-        navigationItem.title = "인기 도시"
+        navigationItem.title = searchEnum.naviTitle
         
         tabBarItem = .init(
-            title: "국가 탐색",
-            image: .init(systemName: "location.viewfinder"),
+            title: searchEnum.barTitle,
+            image: .init(systemName: searchEnum.barImage),
             tag: 0
         )
         
@@ -72,7 +74,9 @@ class SearchTableViewController: UITableViewController {
         ) as! SearchTableViewCell
         
         cell.cityImage.kf.setImage(with: URL(string: filteredInfo[indexPath.row].city_image), placeholder: UIImage(systemName: "photo"))
+        
         cell.cityName.text = filteredInfo[indexPath.row].getTitle
+        
         cell.cityExplain.text = " " + filteredInfo[indexPath.row].city_explain
 
         return cell
