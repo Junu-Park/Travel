@@ -15,6 +15,10 @@ class ShoppingListTableViewController: UITableViewController {
     
     var list = ShoppingList().list
     
+    override func awakeFromNib() {
+        tabBarItem = .init(title: "쇼핑", image: .init(systemName: "cart"), tag: 0)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         

@@ -19,6 +19,10 @@ class TravelInfoTableViewController: UITableViewController {
 //        }
 //    }
     
+    override func awakeFromNib() {
+        tabBarItem = .init(title: "관광지 정보", image: .init(systemName: "info.circle"), tag: 0)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.title = "도시 상세 정보"

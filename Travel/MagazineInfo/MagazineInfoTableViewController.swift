@@ -12,6 +12,10 @@ class MagazineInfoTableViewController: UITableViewController {
 
     var info = MagazineInfo().magazine
     
+    override func awakeFromNib() {
+        tabBarItem = .init(title: "잡지", image: .init(systemName: "magazine"), tag: 0)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.title = "SeSAC TRAVEL"
