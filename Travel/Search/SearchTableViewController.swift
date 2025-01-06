@@ -9,85 +9,119 @@ import UIKit
 
 class SearchTableViewController: UITableViewController {
 
+    @IBOutlet weak var searchTextField: UITextField!
+    @IBOutlet weak var searchSegmentedControl: UISegmentedControl!
+    
+    let allInfo = CityInfo.city
+    
+    var filteredInfo = CityInfo.city {
+        didSet {
+            tableView.reloadData()
+        }
+    }
+    
+    let segmentTitleList = ["모두", "국내", "해외"]
+    
     override func awakeFromNib() {
-        tabBarItem = .init(title: "국가 탐색", image: .init(systemName: "location.viewfinder"), tag: 0)
+        super.awakeFromNib()
+        navigationItem.title = "인기 도시"
+        
+        tabBarItem = .init(
+            title: "국가 탐색",
+            image: .init(systemName: "location.viewfinder"),
+            tag: 0
+        )
+        
+        let nib = UINib(nibName: SearchTableViewCell.id, bundle: nil)
+        tableView.register(nib, forCellReuseIdentifier: SearchTableViewCell.id)
+        tableView.separatorStyle = .none
+        tableView.keyboardDismissMode = .onDrag
+        
+        setSegmentedControl()
+        setTextField()
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationItem.title = "인기 도시"
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
-
-    // MARK: - Table view data source
-
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
+    
+    func setSegmentedControl() {
+        searchSegmentedControl
+            .setTitleTextAttributes(
+                [.font: UIFont.systemFont(ofSize: 14, weight: .black)],
+                for: .selected
+            )
+        for order in 0..<segmentTitleList.count {
+            searchSegmentedControl
+                .setTitle(segmentTitleList[order], forSegmentAt: order)
+        }
+    }
+    
+    func setTextField() {
+        searchTextField.placeholder = "도시 이름을 입력해주세요."
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return 0
+        return filteredInfo.count
     }
 
-    /*
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-
-        // Configure the cell...
+        let cell = tableView.dequeueReusableCell(
+            withIdentifier: SearchTableViewCell.id,
+            for: indexPath
+        ) as! SearchTableViewCell
+        
+        cell.cityImage.kf.setImage(with: URL(string: filteredInfo[indexPath.row].city_image), placeholder: UIImage(systemName: "photo"))
+        cell.cityName.text = filteredInfo[indexPath.row].getTitle
+        cell.cityExplain.text = " " + filteredInfo[indexPath.row].city_explain
 
         return cell
     }
-    */
 
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        tableView.frame.height / 5
     }
-    */
 
-    /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
+    @IBAction func setFilter(_ sender: UISegmentedControl) {
+        filteringInfo()
     }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
+    
+    @IBAction func EnterTextField(_ sender: UITextField) {
+        filteringInfo()
     }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
+    
+    @IBAction func EditTextField(_ sender: UITextField) {
+        filteringInfo()
     }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    
+    func filteringInfo() {
+        switch searchSegmentedControl.selectedSegmentIndex {
+        case 1:
+            filteredInfo = allInfo.filter { $0.domestic_travel
+            }
+        case 2:
+            filteredInfo = allInfo.filter { !$0.domestic_travel
+            }
+        default:
+            filteredInfo = allInfo
+        }
+        
+        let searchText = returnSearchText(searchTextField.text ?? "")
+        if let searchText {
+            filteredInfo = filteredInfo
+                .filter { $0.city_name.lowercased().contains(searchText) || $0.city_english_name.lowercased().contains(searchText) || $0.city_explain.lowercased().contains(searchText)
+                }
+        }
     }
-    */
-
+    
+    func returnSearchText(_ text: String) -> String? {
+        var returnText = text.lowercased()
+        returnText = returnText.trimmingCharacters(in: .whitespaces)
+        
+        if returnText.count != 0 {
+            return returnText
+        } else {
+            return nil
+        }
+    }
 }

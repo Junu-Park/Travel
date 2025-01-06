@@ -478,11 +478,18 @@
                                         <segment title="Second"/>
                                         <segment title=""/>
                                     </segments>
+                                    <connections>
+                                        <action selector="setFilter:" destination="cng-ie-sUi" eventType="valueChanged" id="yx3-gV-CGr"/>
+                                    </connections>
                                 </segmentedControl>
                                 <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="OBj-0F-3MT">
                                     <rect key="frame" x="16" y="51" width="361" height="34"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                     <textInputTraits key="textInputTraits"/>
+                                    <connections>
+                                        <action selector="EditTextField:" destination="cng-ie-sUi" eventType="editingChanged" id="E8Z-2L-a9F"/>
+                                        <action selector="EnterTextField:" destination="cng-ie-sUi" eventType="editingDidEndOnExit" id="hZR-HR-Rvp"/>
+                                    </connections>
                                 </textField>
                             </subviews>
                             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -504,6 +511,10 @@
                     <navigationItem key="navigationItem" id="pcu-pp-q6D">
                         <nil key="title"/>
                     </navigationItem>
+                    <connections>
+                        <outlet property="searchSegmentedControl" destination="R2c-Sp-bDL" id="8Hc-pH-gWG"/>
+                        <outlet property="searchTextField" destination="OBj-0F-3MT" id="GU0-kX-HM9"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3T3-rQ-7wc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
