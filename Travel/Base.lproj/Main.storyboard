@@ -398,7 +398,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Npj-gj-o4Z" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1510.6870229007634" y="898.59154929577471"/>
+            <point key="canvasLocation" x="3411.450381679389" y="929.57746478873241"/>
         </scene>
         <!--Travel Tab Bar Controller-->
         <scene sceneID="nYg-As-R1u">
@@ -414,6 +414,7 @@
                         <segue destination="lgd-Ku-C6h" kind="relationship" relationship="viewControllers" id="cvJ-1I-CN1"/>
                         <segue destination="AFt-J0-H3A" kind="relationship" relationship="viewControllers" id="7hN-ha-odF"/>
                         <segue destination="LJi-Bn-7c2" kind="relationship" relationship="viewControllers" id="GkR-No-AVi"/>
+                        <segue destination="e32-E4-vbg" kind="relationship" relationship="viewControllers" id="0Tk-M3-EfP"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aaC-ar-DEQ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -458,6 +459,56 @@
             </objects>
             <point key="canvasLocation" x="1559.5419847328244" y="117.60563380281691"/>
         </scene>
+        <!--Search Table View Controller-->
+        <scene sceneID="key-Ph-uSU">
+            <objects>
+                <tableViewController id="cng-ie-sUi" customClass="SearchTableViewController" customModule="Travel" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="JXb-8I-MQH">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <view key="tableHeaderView" contentMode="scaleToFill" id="hIK-do-haD">
+                            <rect key="frame" x="0.0" y="0.0" width="393" height="93"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <subviews>
+                                <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="R2c-Sp-bDL">
+                                    <rect key="frame" x="16" y="8" width="361" height="32"/>
+                                    <segments>
+                                        <segment title="First"/>
+                                        <segment title="Second"/>
+                                        <segment title=""/>
+                                    </segments>
+                                </segmentedControl>
+                                <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="OBj-0F-3MT">
+                                    <rect key="frame" x="16" y="51" width="361" height="34"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                    <textInputTraits key="textInputTraits"/>
+                                </textField>
+                            </subviews>
+                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            <constraints>
+                                <constraint firstItem="OBj-0F-3MT" firstAttribute="top" relation="greaterThanOrEqual" secondItem="R2c-Sp-bDL" secondAttribute="bottom" constant="8" id="AXy-7n-qFc"/>
+                                <constraint firstItem="R2c-Sp-bDL" firstAttribute="leading" secondItem="hIK-do-haD" secondAttribute="leading" constant="16" id="Bbg-Af-mdY"/>
+                                <constraint firstAttribute="bottom" secondItem="OBj-0F-3MT" secondAttribute="bottom" constant="8" id="IWP-hd-EXQ"/>
+                                <constraint firstItem="R2c-Sp-bDL" firstAttribute="top" secondItem="hIK-do-haD" secondAttribute="top" constant="8" id="OKs-lr-63Q"/>
+                                <constraint firstAttribute="trailing" secondItem="OBj-0F-3MT" secondAttribute="trailing" constant="16" id="RTf-vk-u7K"/>
+                                <constraint firstItem="OBj-0F-3MT" firstAttribute="leading" secondItem="hIK-do-haD" secondAttribute="leading" constant="16" id="Xbh-32-WWa"/>
+                                <constraint firstAttribute="trailing" secondItem="R2c-Sp-bDL" secondAttribute="trailing" constant="16" id="sqj-cE-ADa"/>
+                            </constraints>
+                        </view>
+                        <connections>
+                            <outlet property="dataSource" destination="cng-ie-sUi" id="CCS-np-ZoJ"/>
+                            <outlet property="delegate" destination="cng-ie-sUi" id="0Fe-Vv-pHD"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="pcu-pp-q6D">
+                        <nil key="title"/>
+                    </navigationItem>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3T3-rQ-7wc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="657.25190839694653" y="1509.8591549295775"/>
+        </scene>
         <!--ShoppingList Navi-->
         <scene sceneID="7lx-w7-de0">
             <objects>
@@ -475,7 +526,26 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0xY-QF-qJn" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="583.96946564885491" y="898.59154929577471"/>
+            <point key="canvasLocation" x="2315.2671755725191" y="929.57746478873241"/>
+        </scene>
+        <!--Item-->
+        <scene sceneID="fqs-91-5e4">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="e32-E4-vbg" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="97v-Yf-fQ4"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="bnJ-PY-llE">
+                        <rect key="frame" x="0.0" y="59" width="393" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="cng-ie-sUi" kind="relationship" relationship="rootViewController" id="vIF-7h-i6U"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="aYA-Gy-iL0" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-269.46564885496184" y="1509.8591549295775"/>
         </scene>
     </scenes>
     <resources>
