@@ -29,7 +29,6 @@ class SearchTableViewCell: UITableViewCell {
         cityImage.backgroundColor = .orange
         cityImage.tintColor = .orange
         cityImage.contentMode = .scaleAspectFill
-        cityImage.image = .init(systemName: "photo")
     }
     
     func setTitle() {
@@ -45,5 +44,9 @@ class SearchTableViewCell: UITableViewCell {
         cityExplain.backgroundColor = .black.withAlphaComponent(0.5)
         // TODO: UIImage는 clipsToBounds 안해도 괜찮았는데 UILabel은 왜...??
         cityExplain.clipsToBounds = true
+    }
+    
+    override func prepareForReuse() {
+        cityImage.image = .init(systemName: "photo")
     }
 }

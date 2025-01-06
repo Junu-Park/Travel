@@ -22,10 +22,25 @@ class TravelInfoTableViewCell: UITableViewCell {
     @IBOutlet weak var likeButton: UIButton!
     
     override func awakeFromNib() {
+        super.awakeFromNib()
+        
+        setImage()
+        setLabel()
+        setButton()
+        setStackView()
+    }
+    
+    override func prepareForReuse() {
+        infoImage.image = .init(systemName: "photo")
+    }
+    
+    func setStackView() {
         for order in 0..<infoStackViewCollection.count {
             infoStackViewCollection[order].spacing = 2
         }
-        
+    }
+    
+    func setLabel() {
         for order in 0..<infoLabelCollection.count {
             switch order {
             case 0:
@@ -47,10 +62,14 @@ class TravelInfoTableViewCell: UITableViewCell {
                 break
             }
         }
-        
+    }
+    
+    func setImage() {
         infoImage.contentMode = .scaleToFill
         infoImage.layer.cornerRadius = 10
-        
+    }
+    
+    func setButton() {
         likeButton.tintColor = .orange
     }
 }
