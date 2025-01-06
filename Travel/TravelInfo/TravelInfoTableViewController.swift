@@ -41,6 +41,10 @@ class TravelInfoTableViewController: UITableViewController {
                 .orange,
                 .systemMint
             ]
+            
+            // 광고 Cell 아래 seperator 제거하기
+            cell.separatorInset = .init(top: 0, left: tableView.frame.width / 2, bottom: 0, right: tableView.frame.width / 2)
+            
             cell.adView.backgroundColor = adBackgroundColorList.randomElement()
             cell.adView.layer.cornerRadius = 10
             
@@ -65,6 +69,11 @@ class TravelInfoTableViewController: UITableViewController {
             
             for order in 0..<cell.infoStackViewCollection.count {
                 cell.infoStackViewCollection[order].spacing = 2
+            }
+            
+            // 광고 Cell 위 seperator 제거하기
+            if (indexPath.row + 1) != info.count && info[indexPath.row + 1].ad {
+                cell.separatorInset = .init(top: 0, left: tableView.frame.width / 2, bottom: 0, right: tableView.frame.width / 2)
             }
             
             for order in 0..<cell.infoLabelCollection.count {
