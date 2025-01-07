@@ -19,6 +19,7 @@ class TravelInfoTableViewController: UITableViewController {
     override func awakeFromNib() {
         tabBarItem = .init(title: travelEnum.barTitle, image: .init(systemName: travelEnum.barImage), tag: 0)
         navigationItem.title = travelEnum.naviTitle
+        navigationItem.backButtonTitle = ""
     }
     
     override func viewDidLoad() {
@@ -80,6 +81,18 @@ class TravelInfoTableViewController: UITableViewController {
             cell.likeButton.addTarget(self, action: #selector(likeButton), for: .touchUpInside)
             
             return cell
+        }
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if info[indexPath.row].ad {
+            
+        } else {
+            let vc = storyboard?.instantiateViewController(withIdentifier: "TravelDetailInfoViewController") as! TravelDetailInfoViewController
+            
+            vc.data = info[indexPath.row]
+            
+            navigationController?.pushViewController(vc, animated: true)
         }
     }
     
