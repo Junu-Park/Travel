@@ -626,16 +626,32 @@
             </objects>
             <point key="canvasLocation" x="-269.46564885496184" y="1509.8591549295775"/>
         </scene>
-        <!--View Controller-->
+        <!--Travel Ad Info View Controller-->
         <scene sceneID="X9b-Gx-R5f">
             <objects>
-                <viewController id="bU9-hb-jzY" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="TravelAdInfoViewController" id="bU9-hb-jzY" customClass="TravelAdInfoViewController" customModule="Travel" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="V43-1Z-tmp">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FmJ-ab-J3V">
+                                <rect key="frame" x="16" y="415.66666666666669" width="361" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="ZFZ-RZ-g9z"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="FmJ-ab-J3V" firstAttribute="centerY" secondItem="V43-1Z-tmp" secondAttribute="centerY" id="0Ej-qa-UGk"/>
+                            <constraint firstItem="ZFZ-RZ-g9z" firstAttribute="trailing" secondItem="FmJ-ab-J3V" secondAttribute="trailing" constant="16" id="Cxm-Mg-BPu"/>
+                            <constraint firstItem="FmJ-ab-J3V" firstAttribute="leading" secondItem="ZFZ-RZ-g9z" secondAttribute="leading" constant="16" id="Hb1-eu-qDW"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="adLabel" destination="FmJ-ab-J3V" id="ufA-S8-mPr"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oCb-6N-KmH" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

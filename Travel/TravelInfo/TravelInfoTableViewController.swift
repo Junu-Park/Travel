@@ -86,7 +86,16 @@ class TravelInfoTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if info[indexPath.row].ad {
+            let vc = storyboard?.instantiateViewController(withIdentifier: "TravelAdInfoViewController") as! TravelAdInfoViewController
             
+            vc.ad = info[indexPath.row].title
+            let navVC = UINavigationController(rootViewController: vc)
+            navVC.navigationBar.tintColor = .black
+            
+            navVC.modalPresentationStyle = .fullScreen
+            navVC.modalTransitionStyle = .flipHorizontal
+            
+            present(navVC, animated: true)
         } else {
             let vc = storyboard?.instantiateViewController(withIdentifier: "TravelDetailInfoViewController") as! TravelDetailInfoViewController
             
