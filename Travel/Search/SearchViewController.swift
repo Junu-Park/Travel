@@ -108,15 +108,7 @@ class SearchViewController: UIViewController, UICollectionViewDelegate, UICollec
         return cell
     }
     
-    @IBAction func setFilter(_ sender: UISegmentedControl) {
-        filteringInfo()
-    }
-    
-    @IBAction func EnterTextField(_ sender: UITextField) {
-        filteringInfo()
-    }
-    
-    @IBAction func EditTextField(_ sender: UITextField) {
+    @IBAction func filtering(_ sender: Any) {
         filteringInfo()
     }
     

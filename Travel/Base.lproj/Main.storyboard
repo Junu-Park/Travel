@@ -693,7 +693,7 @@
                                     <segment title=""/>
                                 </segments>
                                 <connections>
-                                    <action selector="setFilter:" destination="RhK-14-4KA" eventType="valueChanged" id="9gI-4l-0jC"/>
+                                    <action selector="filtering:" destination="RhK-14-4KA" eventType="valueChanged" id="Msa-CO-rfU"/>
                                 </connections>
                             </segmentedControl>
                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="zdD-Sx-TmU">
@@ -701,8 +701,8 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <connections>
-                                    <action selector="EditTextField:" destination="RhK-14-4KA" eventType="editingChanged" id="cUK-kS-Vfw"/>
-                                    <action selector="EnterTextField:" destination="RhK-14-4KA" eventType="editingDidEndOnExit" id="RGu-19-t8j"/>
+                                    <action selector="filtering:" destination="RhK-14-4KA" eventType="editingDidEndOnExit" id="8Ae-Vy-4bI"/>
+                                    <action selector="filtering:" destination="RhK-14-4KA" eventType="editingChanged" id="LSR-JS-sIo"/>
                                 </connections>
                             </textField>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="T2Y-tX-qib">
